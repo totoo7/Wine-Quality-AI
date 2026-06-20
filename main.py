@@ -55,7 +55,7 @@ def run_pipeline(name, X, y):
     best_tree_acc = 0
 
     for depth in range(1, 16):
-        model = DecisionTreeClassifier(max_depth=depth, random_state=42)
+        model = DecisionTreeClassifier(max_depth=depth, random_state=1)
         model.fit(X_train, y_train)
         acc = model.score(X_test, y_test)
 
@@ -63,7 +63,7 @@ def run_pipeline(name, X, y):
             best_tree_acc = acc
             best_depth = depth
 
-    tree_model = DecisionTreeClassifier(max_depth=best_depth, random_state=42)
+    tree_model = DecisionTreeClassifier(max_depth=best_depth, random_state=1)
     tree_model.fit(X_train, y_train)
 
     plot_confusion_matrix(tree_model, X_test, y_test, name + "_tree")
@@ -121,9 +121,7 @@ def main():
 
     print("\nBEST OVERALL SCORE:", best_score)
 
-    # =====================================================
     # REGRESSION (RED)
-    # =====================================================
     print("\n================ REGRESSION (RED WINE) ================")
 
     red_linear = train_linear_regression(
@@ -141,9 +139,7 @@ def main():
     print(f"R2: {r2_red:.4f}")
     print(f"Adjusted R2: {adj_r2_red:.4f}")
 
-    # =====================================================
     # REGRESSION (WHITE)
-    # =====================================================
     print("\n================ REGRESSION (WHITE WINE) ================")
 
     white_linear = train_linear_regression(
