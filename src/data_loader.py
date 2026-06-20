@@ -1,10 +1,14 @@
-from ucimlrepo import fetch_ucirepo
 import pandas as pd
 
-def load_wine_data():
-    dataset = fetch_ucirepo(id=186)
+def load_red_wine():
+    df = pd.read_csv("data/winequality-red.csv", sep=";")
+    X = df.drop("quality", axis=1)
+    y = df["quality"]
+    return X, y
 
-    X = dataset.data.features
-    y = dataset.data.targets.squeeze()
 
+def load_white_wine():
+    df = pd.read_csv("data/winequality-white.csv", sep=";")
+    X = df.drop("quality", axis=1)
+    y = df["quality"]
     return X, y
