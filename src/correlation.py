@@ -10,14 +10,12 @@ def plot_correlation_heatmap(X):
 
     cax = ax.imshow(corr, cmap="coolwarm", vmin=-1, vmax=1)
 
-    # feature labels
     ax.set_xticks(np.arange(len(features)))
     ax.set_yticks(np.arange(len(features)))
 
     ax.set_xticklabels(features, rotation=90)
     ax.set_yticklabels(features)
 
-    # color bar
     plt.colorbar(cax)
 
     plt.title("Feature Correlation Heatmap (Wine Quality)")
